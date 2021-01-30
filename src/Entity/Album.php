@@ -42,7 +42,7 @@ class Album
     /**
      * @ORM\Column(type="smallint", nullable=true)
      */
-    private $globalRanking;
+    private $globalRating;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -122,14 +122,14 @@ class Album
         return $this;
     }
 
-    public function getGlobalRanking(): ?int
+    public function getGlobalRating(): ?int
     {
-        return $this->globalRanking;
+        return $this->globalRating;
     }
 
-    public function setGlobalRanking(?int $globalRanking): self
+    public function setGlobalRating(?int $globalRating): self
     {
-        $this->globalRanking = $globalRanking;
+        $this->globalRating = $globalRating;
 
         return $this;
     }

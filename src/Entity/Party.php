@@ -47,6 +47,11 @@ class Party
      */
     private $albumsLeft;
 
+    /**
+     * @ORM\Column(type="smallint")
+     */
+    private $daysTillInterval;
+
     public function __construct()
     {
         $this->albumsDone = new ArrayCollection();
@@ -126,6 +131,15 @@ class Party
         return $this->albumsLeft;
     }
 
+    /**
+     * @return Album[]
+     */
+	public function setAlbumsLeft(array $albums): self
+         	{
+         		$this->albumsLeft = new ArrayCollection($albums);
+         		return $this;
+         	}
+
     public function addAlbumsLeft(Album $albumLeft): self
     {
         if (!$this->albumsLeft->contains($albumLeft)) {
@@ -143,10 +157,22 @@ class Party
     }
 
 	public function nextAlbum(): Album
-	{
-		$this->albumsDone[] = $this->currentAlbum;
-		$this->currentAlbum = array_pop($this->albumsLeft);
+         	{
+         		$this->albumsDone[] = $this->currentAlbum;
+         		$this->currentAlbum = array_pop($this->albumsLeft);
+         
+         		return $this->currentAlbum;
+         	}
 
-		return $this->currentAlbum;
-	}
+    public function getDaysTillInterval(): ?int
+    {
+        return $this->daysTillInterval;
+    }
+
+    public function setDaysTillInterval(int $daysTillInterval): self
+    {
+        $this->daysTillInterval = $daysTillInterval;
+
+        return $this;
+    }
 }
