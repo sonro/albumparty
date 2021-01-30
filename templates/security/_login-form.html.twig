@@ -1,5 +1,5 @@
-<form method="post" action"{{ path('app_login') }}">
-    {% if error %}
+<form method="post" action="{{ path('app_login') }}">
+    {% if error is defined and error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
@@ -8,6 +8,11 @@
             You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
         </div>
     {% endif %}
+
+    {% if last_username is not defined %}
+		{% set last_username = '' %}
+    {% endif %}
+	
 
     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
     <label for="inputUsername">Username</label>
