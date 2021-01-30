@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AlbumParty{% endblock %}
+
+{% block body %}
+	<header class="hero">
+		<h1 class="hero__title">AlbumParty</h1>
+	</header>
+
+    {% if no_party is defined and no_party %}
+		<div class="dash-item">
+			<p>No current listening party</p>
+		</div>
+    {% endif %}
+
+	{% if last_album_reviewed is defined and not last_album_reviewed %}
+		<div class="dash-item">
+			<p>Please rate last album</p>
+		</div>
+    {% endif %}
+
+	{% if current_album is defined %}
+		<section class="dash-item album-info">
+			<h3 class="album-info__title">{{ current_album.title }}</h3>
+			<h4 class="album-info__artist">{{ current_album.artist }}</h3>
+			<img class="album-info__img" src="{{ current_album.imagePath }}">
+			<p class="album-info__year">{{ current_album.year }}</p>
+			<ul class="album-links">
+				<li class="album-links__item">
+					<a class="album-links__link" href="{{ current_album.spotify }}">Spotify</a>
+				</li>
+			</ul>
+		</section>
+    {% endif %}
+
+	{% if next_album_when is defined %}
+		<div class="dash-item">
+			<p class="">Next album: {{ next_album_when }}</p>
+		</div>
+    {% endif %}
+
+{% endblock %}
