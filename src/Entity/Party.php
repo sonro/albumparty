@@ -135,10 +135,10 @@ class Party
      * @return Album[]
      */
 	public function setAlbumsLeft(array $albums): self
-         	{
-         		$this->albumsLeft = new ArrayCollection($albums);
-         		return $this;
-         	}
+	{
+		$this->albumsLeft = new ArrayCollection($albums);
+		return $this;
+	}
 
     public function addAlbumsLeft(Album $albumLeft): self
     {
@@ -157,12 +157,12 @@ class Party
     }
 
 	public function nextAlbum(): Album
-         	{
-         		$this->albumsDone[] = $this->currentAlbum;
-         		$this->currentAlbum = array_pop($this->albumsLeft);
-         
-         		return $this->currentAlbum;
-         	}
+	{
+		$this->albumsDone[] = $this->currentAlbum;
+		$this->currentAlbum = array_pop($this->albumsLeft);
+ 
+		return $this->currentAlbum;
+	}
 
     public function getDaysTillInterval(): ?int
     {
