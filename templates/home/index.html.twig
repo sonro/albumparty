@@ -3,12 +3,24 @@
 {% block title %}AlbumParty{% endblock %}
 
 {% block body %}
-	<h1>AlbumParty</h1>
-	<p>
-		Listen and rate all 1001 albums in the book
-		<a href="">1001 Albums You Must Hear Before You Die</a>
-		- automatically generated daily, or at an interval of your choosing.
-		If you want to share the experience, create a group and invite
-		your friends.
-	</p>
+	<header class="hero">
+		<h1 class="hero__title">AlbumParty</h1>
+		<div class="hero__text">
+			<p>
+			Listen and rate all albums in the book:
+			<a href="">1001 Albums You Must Hear Before You Die</a>.
+			Generated daily, or at an interval of your choosing.
+			Want to share the experience? Create a group and invite
+			your friends.
+			</p>
+			<p>
+			To get started: login or sign-up below.
+			</p>
+		</div>
+	</header>
+	<section class="login">
+		{{ include('security/_login-form.html.twig') }}
+	</section>
+	<section class="sign-up">
+	</section>
 {% endblock %}
