@@ -23,7 +23,9 @@ class RegistrationController extends AbstractController
 	): Response
     {
         $user = new User();
-        $form = $this->createForm(RegistrationFormType::class, $user);
+		$form = $this->createForm(RegistrationFormType::class, $user, [
+			'action' => $this->generateUrl('app_register'),
+		]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
